@@ -11,6 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -49,11 +51,11 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="kontakt" className="section-padding bg-secondary">
+    <SectionReveal id="kontakt" className="section-padding bg-secondary">
       <div className="container-max">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left: Contact Info */}
-          <div>
+          <ScrollReveal>
             <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
               Kontakt
             </span>
@@ -67,200 +69,208 @@ const ContactForm = () => {
             </p>
 
             {/* Contact Details */}
-            <div className="space-y-6">
-              <a
-                href="tel:+4989123456789"
-                className="flex items-center gap-4 text-foreground hover:text-primary transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
-                  <Phone className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">Telefon</div>
-                  <div className="font-semibold">089 123 456 789</div>
-                </div>
-              </a>
+            <StaggerContainer className="space-y-6" staggerDelay={0.1}>
+              <StaggerItem>
+                <a
+                  href="tel:+4989123456789"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <Phone className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Telefon</div>
+                    <div className="font-semibold">089 123 456 789</div>
+                  </div>
+                </a>
+              </StaggerItem>
 
-              <a
-                href="mailto:info@renovio.de"
-                className="flex items-center gap-4 text-foreground hover:text-primary transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
-                  <Mail className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">E-Mail</div>
-                  <div className="font-semibold">info@renovio.de</div>
-                </div>
-              </a>
+              <StaggerItem>
+                <a
+                  href="mailto:info@renovio.de"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <Mail className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">E-Mail</div>
+                    <div className="font-semibold">info@renovio.de</div>
+                  </div>
+                </a>
+              </StaggerItem>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground">Standort</div>
-                  <div className="font-semibold text-foreground">
-                    München & ganz Deutschland
+              <StaggerItem>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Standort</div>
+                    <div className="font-semibold text-foreground">
+                      München & ganz Deutschland
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </ScrollReveal>
 
           {/* Right: Form */}
-          <div className="card-elevated p-8 md:p-10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    Name *
-                  </label>
-                  <Input
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    placeholder="Ihr Name"
-                    className="h-12"
-                  />
+          <ScrollReveal delay={0.2}>
+            <div className="card-elevated p-8 md:p-10">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Name *
+                    </label>
+                    <Input
+                      id="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      placeholder="Ihr Name"
+                      className="h-12"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      E-Mail *
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      placeholder="ihre@email.de"
+                      className="h-12"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    E-Mail *
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    placeholder="ihre@email.de"
-                    className="h-12"
-                  />
-                </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Telefon (Optional)
+                    </label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      placeholder="+49 123 456789"
+                      className="h-12"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="projectType"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Was möchten Sie sanieren? *
+                    </label>
+                    <Select
+                      required
+                      value={formData.projectType}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, projectType: value })
+                      }
+                    >
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Auswählen..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="komplett">Komplettwohnung</SelectItem>
+                        <SelectItem value="bad">Bad</SelectItem>
+                        <SelectItem value="kueche">Küche</SelectItem>
+                        <SelectItem value="sonstiges">Sonstiges</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
                 <div>
                   <label
-                    htmlFor="phone"
+                    htmlFor="squareMeters"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Telefon (Optional)
+                    Ungefähre Quadratmeterzahl
                   </label>
                   <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
+                    id="squareMeters"
+                    type="text"
+                    value={formData.squareMeters}
                     onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
+                      setFormData({ ...formData, squareMeters: e.target.value })
                     }
-                    placeholder="+49 123 456789"
+                    placeholder="z.B. 80 m²"
                     className="h-12"
                   />
                 </div>
+
                 <div>
                   <label
-                    htmlFor="projectType"
+                    htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Was möchten Sie sanieren? *
+                    Nachricht
                   </label>
-                  <Select
-                    required
-                    value={formData.projectType}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, projectType: value })
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
                     }
-                  >
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Auswählen..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="komplett">Komplettwohnung</SelectItem>
-                      <SelectItem value="bad">Bad</SelectItem>
-                      <SelectItem value="kueche">Küche</SelectItem>
-                      <SelectItem value="sonstiges">Sonstiges</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
+                    rows={4}
+                  />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor="squareMeters"
-                  className="block text-sm font-medium text-foreground mb-2"
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-accent w-full h-14 text-lg"
                 >
-                  Ungefähre Quadratmeterzahl
-                </label>
-                <Input
-                  id="squareMeters"
-                  type="text"
-                  value={formData.squareMeters}
-                  onChange={(e) =>
-                    setFormData({ ...formData, squareMeters: e.target.value })
-                  }
-                  placeholder="z.B. 80 m²"
-                  className="h-12"
-                />
-              </div>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin mr-2" />
+                      Wird gesendet...
+                    </>
+                  ) : (
+                    <>
+                      Kostenlose Ersteinschätzung anfordern
+                      <Send className="ml-2 w-5 h-5" />
+                    </>
+                  )}
+                </Button>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-foreground mb-2"
-                >
-                  Nachricht
-                </label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  placeholder="Beschreiben Sie kurz Ihr Vorhaben..."
-                  rows={4}
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-accent w-full h-14 text-lg"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin mr-2" />
-                    Wird gesendet...
-                  </>
-                ) : (
-                  <>
-                    Kostenlose Ersteinschätzung anfordern
-                    <Send className="ml-2 w-5 h-5" />
-                  </>
-                )}
-              </Button>
-
-              <p className="text-sm text-muted-foreground text-center">
-                Ihre Daten werden vertraulich behandelt und nicht an Dritte
-                weitergegeben.
-              </p>
-            </form>
-          </div>
+                <p className="text-sm text-muted-foreground text-center">
+                  Ihre Daten werden vertraulich behandelt und nicht an Dritte
+                  weitergegeben.
+                </p>
+              </form>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
-    </section>
+    </SectionReveal>
   );
 };
 

@@ -1,4 +1,6 @@
 import { Video, Calculator, FileCheck, CheckCircle } from "lucide-react";
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const steps = [
   {
@@ -26,7 +28,7 @@ const steps = [
 
 const FixedPriceModel = () => {
   return (
-    <section id="festpreis" className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+    <SectionReveal id="festpreis" className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -35,7 +37,7 @@ const FixedPriceModel = () => {
 
       <div className="container-max relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block bg-accent/20 text-accent font-semibold text-sm uppercase tracking-wider px-4 py-2 rounded-full mb-6">
             Der Gamechanger
           </span>
@@ -47,16 +49,16 @@ const FixedPriceModel = () => {
             Im traditionellen Handwerk sind Angebote oft nur Schätzungen. Bei Renovio
             nutzen wir Daten und digitale Aufmaße, um präzise zu kalkulieren.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8 relative">
+        <StaggerContainer className="grid md:grid-cols-3 gap-8 relative" staggerDelay={0.15}>
           {/* Connection Line (Desktop) */}
           <div className="hidden md:block absolute top-24 left-1/6 right-1/6 h-0.5 bg-accent/30" />
 
           {steps.map((step, index) => (
-            <div key={step.title} className="relative">
-              <div className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors">
+            <StaggerItem key={step.title} className="relative">
+              <div className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors h-full">
                 {/* Step Number */}
                 <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold mb-6 relative z-10">
                   {step.number}
@@ -92,27 +94,29 @@ const FixedPriceModel = () => {
                   </svg>
                 </div>
               )}
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Guarantee Box */}
-        <div className="mt-16 bg-accent/10 rounded-2xl p-8 md:p-12 border border-accent/20">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-              <CheckCircle className="w-10 h-10 text-accent-foreground" />
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">Unsere Garantie</h3>
-              <p className="text-primary-foreground/80 text-lg">
-                Sollte der finale Preis über dem Angebot liegen, übernehmen wir die Differenz.
-                100% Festpreis bedeutet 100% Planungssicherheit für Sie.
-              </p>
+        <ScrollReveal delay={0.4} className="mt-16">
+          <div className="bg-accent/10 rounded-2xl p-8 md:p-12 border border-accent/20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-10 h-10 text-accent-foreground" />
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl font-bold mb-2">Unsere Garantie</h3>
+                <p className="text-primary-foreground/80 text-lg">
+                  Sollte der finale Preis über dem Angebot liegen, übernehmen wir die Differenz.
+                  100% Festpreis bedeutet 100% Planungssicherheit für Sie.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
-    </section>
+    </SectionReveal>
   );
 };
 

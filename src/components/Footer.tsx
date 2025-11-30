@@ -1,10 +1,17 @@
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-primary-foreground section-padding py-16">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="bg-foreground text-primary-foreground section-padding py-16"
+    >
       <div className="container-max">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
@@ -20,14 +27,16 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               {[Facebook, Instagram, Linkedin, Youtube].map((Icon, index) => (
-                <a
+                <motion.a
                   key={index}
                   href="#"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                   className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-primary transition-colors"
                   aria-label="Social Media Link"
                 >
                   <Icon className="w-5 h-5" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -125,7 +134,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

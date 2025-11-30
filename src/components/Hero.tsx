@@ -1,5 +1,6 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-renovation.jpg";
 
 const Hero = () => {
@@ -7,10 +8,13 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img
+        <motion.img
           src={heroImage}
           alt="Moderne Sanierung Ergebnis"
           className="w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/70 to-foreground/40" />
       </div>
@@ -19,31 +23,51 @@ const Hero = () => {
       <div className="relative z-10 container-max section-padding pt-32">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6 animate-fade-up">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6"
+          >
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-primary-foreground text-sm font-medium">
               Digitale Sanierung der Zukunft
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up-delay-1">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
+          >
             Sanierung ohne Kopfschmerzen.
             <span className="block text-accent mt-2">
               Digital geplant, meisterhaft gebaut.
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed animate-fade-up-delay-2">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="text-lg md:text-xl text-primary-foreground/80 mb-8 leading-relaxed"
+          >
             Renovio bringt Ihr Projekt ins 21. Jahrhundert. Wir bieten transparente{" "}
             <strong className="text-primary-foreground">Festpreise</strong>, digitale Baufortschritte und{" "}
             <strong className="text-primary-foreground">garantierte Termintreue</strong> für Ihre Komplettsanierung.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
-            <Button asChild size="lg" className="btn-accent text-lg px-8 py-6 animate-pulse-glow">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Button asChild size="lg" className="btn-accent text-lg px-8 py-6">
               <a href="#kontakt">
                 Jetzt Festpreis-Angebot anfordern
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -60,10 +84,15 @@ const Hero = () => {
                 So funktioniert Renovio
               </a>
             </Button>
-          </div>
+          </motion.div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center gap-6 mt-12 animate-fade-up-delay-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1 }}
+            className="flex flex-wrap items-center gap-6 mt-12"
+          >
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
@@ -95,16 +124,21 @@ const Hero = () => {
                 <strong className="text-primary-foreground">4.9/5</strong> Bewertung
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+      >
         <div className="w-8 h-12 rounded-full border-2 border-primary-foreground/30 flex items-start justify-center p-2">
           <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

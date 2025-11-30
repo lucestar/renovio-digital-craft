@@ -1,3 +1,5 @@
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 import teamImage from "@/assets/team-construction.jpg";
 
 const teamMembers = [
@@ -23,11 +25,11 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <section id="team" className="section-padding bg-background">
+    <SectionReveal id="team" className="section-padding bg-background">
       <div className="container-max">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
-          <div>
+          <ScrollReveal>
             <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
               Über Uns
             </span>
@@ -47,60 +49,59 @@ const Team = () => {
             </p>
 
             {/* Values */}
-            <div className="grid sm:grid-cols-3 gap-6 mt-10">
+            <StaggerContainer className="grid sm:grid-cols-3 gap-6 mt-10" staggerDelay={0.1}>
               {[
                 { value: "100%", label: "Meisterbetriebe" },
                 { value: "15+", label: "Jahre Erfahrung" },
                 { value: "24h", label: "Antwortzeit" },
               ].map((item) => (
-                <div key={item.label} className="text-center sm:text-left">
+                <StaggerItem key={item.label} className="text-center sm:text-left">
                   <div className="text-3xl font-bold text-primary mb-1">
                     {item.value}
                   </div>
                   <div className="text-muted-foreground text-sm">{item.label}</div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-          </div>
+            </StaggerContainer>
+          </ScrollReveal>
 
           {/* Right: Team Cards */}
-          <div className="space-y-6">
-            {teamMembers.map((member, index) => (
-              <div
-                key={member.name}
-                className="card-elevated p-6 flex items-center gap-6"
-              >
-                {/* Avatar */}
-                {member.image ? (
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-20 h-20 rounded-xl object-cover"
-                  />
-                ) : (
-                  <div className="w-20 h-20 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl font-bold text-primary">
-                      {member.initial}
-                    </span>
-                  </div>
-                )}
+          <StaggerContainer className="space-y-6" staggerDelay={0.15}>
+            {teamMembers.map((member) => (
+              <StaggerItem key={member.name}>
+                <div className="card-elevated p-6 flex items-center gap-6">
+                  {/* Avatar */}
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-20 h-20 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl font-bold text-primary">
+                        {member.initial}
+                      </span>
+                    </div>
+                  )}
 
-                {/* Info */}
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary font-medium text-sm mb-2">
-                    {member.role}
-                  </p>
-                  <p className="text-muted-foreground italic">"{member.quote}"</p>
+                  {/* Info */}
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary font-medium text-sm mb-2">
+                      {member.role}
+                    </p>
+                    <p className="text-muted-foreground italic">"{member.quote}"</p>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </div>
-    </section>
+    </SectionReveal>
   );
 };
 

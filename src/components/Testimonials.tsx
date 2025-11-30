@@ -1,4 +1,6 @@
 import { Star, Quote } from "lucide-react";
+import { SectionReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
+import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const testimonials = [
   {
@@ -29,10 +31,10 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="referenzen" className="section-padding bg-secondary">
+    <SectionReveal id="referenzen" className="section-padding bg-secondary">
       <div className="container-max">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
             Referenzen
           </span>
@@ -43,80 +45,78 @@ const Testimonials = () => {
           <p className="text-lg text-muted-foreground">
             Über 500 zufriedene Kunden vertrauen auf unsere digitale Sanierungsmethode.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.name}
-              className="card-elevated p-8 relative group"
-            >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Quote className="w-6 h-6 text-primary-foreground" />
-              </div>
-
-              {/* Rating */}
-              <div className="flex gap-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 text-accent fill-accent"
-                  />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <blockquote className="text-foreground text-lg mb-6 leading-relaxed">
-                "{testimonial.text}"
-              </blockquote>
-
-              {/* Highlight */}
-              <div className="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-6">
-                {testimonial.highlight}
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-border">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-primary font-bold">
-                    {testimonial.name.charAt(0)}
-                  </span>
+        <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
+          {testimonials.map((testimonial) => (
+            <StaggerItem key={testimonial.name}>
+              <div className="card-elevated p-8 relative group h-full">
+                {/* Quote Icon */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Quote className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <div>
-                  <div className="font-semibold text-foreground">
-                    {testimonial.name}
+
+                {/* Rating */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-accent fill-accent"
+                    />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <blockquote className="text-foreground text-lg mb-6 leading-relaxed">
+                  "{testimonial.text}"
+                </blockquote>
+
+                {/* Highlight */}
+                <div className="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full mb-6">
+                  {testimonial.highlight}
+                </div>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-border">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-primary font-bold">
+                      {testimonial.name.charAt(0)}
+                    </span>
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.project} • {testimonial.location}
+                  <div>
+                    <div className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.project} • {testimonial.location}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Social Proof Bar */}
-        <div className="mt-16 text-center">
+        <ScrollReveal delay={0.3} className="mt-16 text-center">
           <p className="text-muted-foreground mb-6">
             Über 500 erfolgreiche Projekte in ganz Deutschland
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+          <StaggerContainer className="flex flex-wrap justify-center items-center gap-8 opacity-60" staggerDelay={0.05}>
             {["München", "Berlin", "Hamburg", "Frankfurt", "Köln", "Stuttgart"].map(
               (city) => (
-                <span
-                  key={city}
-                  className="text-foreground font-semibold text-lg"
-                >
-                  {city}
-                </span>
+                <StaggerItem key={city}>
+                  <span className="text-foreground font-semibold text-lg">
+                    {city}
+                  </span>
+                </StaggerItem>
               )
             )}
-          </div>
-        </div>
+          </StaggerContainer>
+        </ScrollReveal>
       </div>
-    </section>
+    </SectionReveal>
   );
 };
 
