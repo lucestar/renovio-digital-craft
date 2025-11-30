@@ -58,6 +58,8 @@ const App = () => (
             <Route path="/warum-renovio" element={<Index />} />
             <Route path="/leistungen" element={<Index />} />
             <Route path="/services" element={<Index />} />
+            <Route path="/festpreis" element={<Index />} />
+            <Route path="/referenzen" element={<Index />} />
             <Route path="/team" element={<Index />} />
             <Route path="/kontakt" element={<Index />} />
             <Route path="/contact" element={<Index />} />
