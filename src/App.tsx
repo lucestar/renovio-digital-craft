@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom"; // Changed to HashRouter
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -15,15 +15,14 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* IMPORTANT: The 'basename' below must match your repository name.
-           This tells React: "We are running inside the /renovio-digital-craft/ folder" 
-        */}
-        <BrowserRouter basename="/renovio-digital-craft">
+        {/* HashRouter is much safer for GitHub Pages. 
+            It adds a '#' to the URL to prevent 404 errors. */}
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
