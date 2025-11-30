@@ -15,7 +15,10 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        {/* IMPORTANT: The 'basename' below must match your repository name.
+           This tells React: "We are running inside the /renovio-digital-craft/ folder" 
+        */}
+        <BrowserRouter basename="/renovio-digital-craft">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
